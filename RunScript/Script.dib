@@ -1,0 +1,17 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"}]}}
+
+#!csharp
+
+using System.IO;
+
+StringBuilder sb = new();
+var files = Directory.GetFiles("./", "*.txt", SearchOption.AllDirectories); 
+foreach (var f in files)
+{
+    string text = File.ReadAllText(f);
+    sb.AppendLine(text);
+}
+
+File.WriteAllText("./Done.txt", sb.ToString());
